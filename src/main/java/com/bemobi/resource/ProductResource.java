@@ -16,11 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bemobi.dto.ProductDto;
 import com.bemobi.model.Product;
 import com.bemobi.service.ProductService;
+import com.bemobi.service.QueueService;
 
 @RestController
 @RequestMapping("/products")
 public class ProductResource {
 
+	@Autowired
+	private QueueService queueService;
+	
 	@Autowired
 	private ProductService productService;
 
@@ -30,7 +34,8 @@ public class ProductResource {
 	public ResponseEntity<HttpStatus> product(@Valid @RequestBody ProductDto dto) {
 		LOG.info("HTTP request received:" + dto);
 		Product product = this.productService.create(dto.build());
-		LOG.info("HTTP request generated:" + product);
+		this.queueService.sendToQueue(product);
+		LOG.info("Sent to queue:" + product);
 		return ResponseEntity.accepted().build();
 	}
 
