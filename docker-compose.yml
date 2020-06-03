@@ -11,6 +11,24 @@ services:
     networks:
       - default
 
+  master:
+    image: locustio/locust
+    ports:
+      - 8089:8089
+    volumes:
+      - ./locust:/mnt/locust
+    command: -f /mnt/locust/locustfile.py --master --host http://localhost:8085
+    networks:
+      - default
+    
+  worker:
+    image: locustio/locust
+    volumes:
+      - ./locust:/mnt/locust
+    command: -f /mnt/locust/locustfile.py --worker --master-host master
+    networks:
+      - default
+
 networks:
   default:
     driver: bridge
