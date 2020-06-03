@@ -47,17 +47,18 @@ For **integration test**, we used JUnit. To see the tests, just go to:
 
 - Folder: src/test/java
 - Packages:
-    - com.bemobichallange.resource
-    - com.bemobichallange.utils
+    - com.bemobi.resource
+    - com.bemobi.utils
 
 
 
 ## CONFIGURATION
 ---
-To build this project locally, open the main directory and insert the following commands:
+Before sent the Product HTTP Request to our service, we must set up the SQS Queue service and Locust service. Because our REST API will try to make a connection with them.
+
+So, we just need to open a command-line in the ROOT project directory and run the following command:
 
 ```
-docker-compose build
 docker-compose up
 ```
 
@@ -66,7 +67,7 @@ docker-compose up
 ## REQUIREMENT
 ---
 - JDK 8
-- Any IDE that runs Spring Boot
+- Any IDE that runs a Spring Boot Java project
     - e.g STS - [https://spring.io/tools](SpringToolsSuit)
 - Docker - [https://www.docker.com](Docker)
 - MakeFile (Optional for fast building) - [https://www.gnu.org/software/make](MakeFile)
@@ -75,7 +76,14 @@ docker-compose up
 
 ## BASICS
 ---
-Usage typically looks like this:
+
+Basically summarizing, first of all, open a command-line in the ROOT project directory and run the command:
+
+```
+docker-compose up
+```
+
+Then, open the java project and run it. The usage typically looks like this:
 
 POST: http://localhost:8085/products
 ```json
