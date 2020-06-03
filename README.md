@@ -108,3 +108,15 @@ Sent to the Product Queue
     "ttl": "1588285962993"
 }
 ```
+
+## BASICS WITHOUT JAVA OR STS IDE INSTALLED
+
+Oh, no!! I don't have Java neither i can't execute the STS Java project in my machine.. So, what now??
+
+Just relax !! There is no problem, you can run our project in a docker container, just run the following command in your command-line from the ROOT project directory.
+
+```
+docker-compose -f docker-compose.yml -f docker-compose.java.yml up
+```
+
+After that just repeat the **BASICS Section**, but you don't need to run ```docker-compose up``` command anymore, just skip that.

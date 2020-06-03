@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    image: pedro/dockerapp
+    container_name: rest-api
+    ports:
+      - 8085:8085
+    networks:
+      - default
